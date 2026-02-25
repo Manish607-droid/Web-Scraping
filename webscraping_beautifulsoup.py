@@ -292,8 +292,74 @@ for row8 in team_data8[1:]:
   print(df8)
 
 
+url9 = 'https://www.scrapethissite.com/pages/forms/?page_num=9'
+
+page9 = requests.get(url9)
+print(page9)
+
+soup9 = BeautifulSoup(page9.text, 'html')
+print(soup9.prettify())
+
+table9 = soup9.find_all('th')
+print(table9)
+
+hockey_table9 = []
+for title9 in table9:
+  hockey_table9.append(title9.text.strip())
 
 
+print(hockey_table9)
+
+df9 = pd.DataFrame(columns = hockey_table9)
+
+print(df9)
+
+team9_data = soup9.find_all('tr')
+print(team9_data)
+
+
+for row9 in team9_data[1:]:
+  row9_data = row9.find_all('td')
+  print(row9_data)
+  team_row9_data = [data9.text.strip() for data9 in row9_data]
+  print(team_row9_data)
+  length9 = len(df9)
+  df9.loc[length9] = team_row9_data
+
+print(df9)
+
+
+url10 = 'https://www.scrapethissite.com/pages/forms/?page_num=10'
+
+page10 = requests.get(url10)
+print(page10)
+
+soup10 = BeautifulSoup(page10.text, 'html')
+print(soup10.prettify())
+
+table10 = soup10.find_all('th')
+print(table10)
+
+hockey_table10 = [title10.text.strip() for title10 in table10]
+print(hockey_table10)
+
+df10 = pd.DataFrame(columns = hockey_table10)
+
+print(df10)
+
+
+team_data10 = soup10.find_all('tr')
+print(team_data10)
+
+for row10 in team_data10[1:]:
+  row_data10 = row10.find_all('td')
+  print(row_data10)
+  team_row_data10 = [data10.text.strip() for data10 in row_data10]
+  print(team_row_data10)
+  length10 = len(df10)
+  df10.loc[length10] = team_row_data10
+  
+  print(df10)
 
 
 
