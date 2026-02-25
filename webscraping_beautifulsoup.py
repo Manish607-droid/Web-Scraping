@@ -256,6 +256,43 @@ print(df7)
 
 
 
+url8 = 'https://www.scrapethissite.com/pages/forms/?page_num=8'
+
+page8 = requests.get(url8)
+print(page8)
+
+soup8 = BeautifulSoup(page8.text, 'html')
+print(soup8.prettify())
+
+table8 = soup8.find_all('th')
+print(table8)
+
+hockey_table8 = [title8.text.strip() for title8 in table8]
+print(hockey_table8)
+
+  
+print(hockey_table8)
+
+df8 = pd.DataFrame(columns= hockey_table8)
+print(df8)
+
+
+team_data8 = soup8.find_all('tr')
+print(team_data8)
+  
+  
+for row8 in team_data8[1:]:
+  row8_data = row8.find_all('td')
+  print(row8_data)
+  team_row8_data = [data8.text.strip() for data8 in row8_data]
+  print(team_row8_data)
+  length8 = len(df8)
+  df8.loc[length8] = team_row8_data
+  
+  print(df8)
+
+
+
 
 
 
